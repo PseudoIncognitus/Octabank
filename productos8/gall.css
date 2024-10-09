@@ -1,82 +1,113 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
+*{
+  margin: 0;
+  padding: 0;
+  list-style:none;
+  text-decoration: none;
+  font-family: sans-serif;
+  box-sizing: border-box;
+}
 body{
   margin: 0;
   font-family: sans-serif;
   background: url("8 sin título_20241002111823.jpg");
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
   height: 100%;
   width: 100%;
+  min-height: 100vh;
 }
 header{
-    -webkit-background-composite: #202020;
-    background-color: #202020;
-    position: absolute;
-    background-position: center;
-    width: 100%;
-    padding: 20px 100px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    z-index: 99;
+  width: 100%;
+  height: 80px;
+  background-color: #090f1d;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 100px;
 }
+
 .logo{
-    font-size: 2.3rem;
-    color: #fff;
-    user-select: none;
+  font-size: 28px;
+  font-weight: bold;
+  color: #fff;
+}
+
+.barra{
+  display: none;
+}
+
+.nav-barra ul{
+  display: flex;
+}
+
+.nav-barra ul li a {
+  display: block;
+  color: #ffffff;
+  font-size: 18px;
+  padding: 10px 25px;
+  border-radius: 15px;
+  transition: 0.2s;
+  margin: 0 5px;
+  
+}
+
+.nav-barra ul li a:hover {
+  color: #000;
+  background-color: orange;
+  
+}
+
+.nav-barra ul li a.active {
+  color: #090f1e;
+  background-color: orange;
+  
+}
+
+@media(max-width: 900px){
+  
+  header{
+    padding: 0px 30p;
+  }
+  .barra{
+    display: block;
     cursor: pointer;
-}
-.icono{
-    height: 150px;
-    width: 150px;
-}
-
-.navegacion a{
-    position: flex;
-    font-size: 1.1rem;
-    color: #fff;
-    text-decoration: none;
-    font-weight: 500;
-    margin-left: 40px; 
-}
-
-.navegacion a::after{
-    content: "";
+  }
+  .barra .line{
+    width: 30px;
+    height: 3px;
+    background-color: #f1efef;
+    margin: 6px 0px;
+  }
+  .nav-barra{
+    height: 0px;
     position: absolute;
-    width: 100%;
-    bottom: -6px;
+    top:80px;
     left: 0;
-    height: 2px;
-    background: #fff;
-    transform: scaleX(0);
-    transform-origin: right;
-    transition: transform .4s;
+    right: 0;
+    width: 100vw;
+    background-color: #2e2f34;
+    transition: 0.5s;
+    overflow: hidden;
+  }
+  .nav-barra.active{
+    height: 450px;
+  }
+  .nav-barra ul{
+    display: block;
+    width: fit-content;
+    margin: 80px auto 0 auto;
+    text-align: center;
+    transition: 0.5s;
+    opacity: 0;
+  }
+  .nav-barra.active ul{
+    opacity: 1;
+  }
+  .nav-barra ul li a{
+    margin-bottom: 20px
+  }
 }
 
-.navegacion a:hover::after{
-    transform: scaleX(1);
-    transform-origin: left;
-}
-
-.navegacion .btn{
-    width: 140px;
-    height: 50px;
-    background: transparent;
-    border: 2px solid #fff;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 1.1rem;
-    color: #fff;
-    font-weight: 600;
-    margin-left: 40px;
-}
-
-.navegacion .btn:hover{
-    background: #fff;
-    color: black;
-}
 
 /*---------- header fin------*/
 h3{
@@ -91,7 +122,9 @@ a{
 }
 .gallery{
   position: sticky;
-  display: flex;
+  display: grid;
+  grid-template-columns: 
+  repeat(auto-fit, minmax(min(350px, 100%) 1fr));
   flex-wrap: wrap;
   width: 100;
   height: 100%;
@@ -159,11 +192,7 @@ button{
 }
 
 /*--------------Pie dd página-------------*/
-.pie-pagina{
-  background-color: #090f1d;
-  font-size: small;
-}
-  
+
 .pie-pagina .grupo-1{
    width: 100%;
    max-width: 1200%;
